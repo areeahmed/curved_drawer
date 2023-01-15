@@ -1,3 +1,6 @@
+import 'package:curved_drawer/src/people.dart';
+import 'package:curved_drawer/src/trending.dart';
+import 'package:curved_drawer/src/tv.dart';
 import 'package:curved_drawer_fork/curved_drawer_fork.dart';
 import 'package:flutter/material.dart';
 
@@ -101,110 +104,11 @@ class _HomeState extends State<Home> {
       ///* Curved Drawer is until here
       ///
       ///
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Current index is $index',
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            Text("Left Width = $leftWidth"),
-            Slider(
-              label: "Left Drawer Width",
-              activeColor: Colors.blue,
-              min: 50.0,
-              max: 100.0,
-              divisions: 50,
-              value: leftWidth,
-              onChanged: (value) => setState(() => leftWidth = value),
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            SliderTheme(
-                data: const SliderThemeData(
-                    valueIndicatorTextStyle: TextStyle(color: Colors.grey)),
-                child: Slider(
-                  label: "Left Drawer Background Color",
-                  activeColor: colorPallete[leftBackgroundColor],
-                  min: 0,
-                  max: colorPallete.length.toDouble() - 1.0,
-                  divisions: colorPallete.length,
-                  value: leftBackgroundColor.toDouble(),
-                  onChanged: (value) => setState(() {
-                    leftBackgroundColor = value.toInt();
-                  }),
-                )),
-            const SizedBox(
-              height: 15,
-            ),
-            SliderTheme(
-                data: const SliderThemeData(
-                    valueIndicatorTextStyle: TextStyle(color: Colors.grey)),
-                child: Slider(
-                  label: "Left Drawer Label Color",
-                  activeColor: colorPallete[leftTextColor],
-                  min: 0,
-                  max: colorPallete.length.toDouble() - 1.0,
-                  divisions: colorPallete.length,
-                  value: leftTextColor.toDouble(),
-                  onChanged: (value) => setState(() {
-                    leftTextColor = value.toInt();
-                  }),
-                )),
-            const SizedBox(
-              height: 15,
-            ),
-            Text("Right Width = $rightWidth"),
-            Slider(
-              label: "Right Drawer Width",
-              activeColor: Colors.blue,
-              min: 50.0,
-              max: 100.0,
-              divisions: 50,
-              value: rightWidth,
-              onChanged: (value) => setState(() => rightWidth = value),
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            SliderTheme(
-                data: const SliderThemeData(
-                    valueIndicatorTextStyle: TextStyle(color: Colors.grey)),
-                child: Slider(
-                  label: "Right Drawer Background Color",
-                  activeColor: colorPallete[rightBackgroundColor],
-                  min: 0,
-                  max: colorPallete.length.toDouble() - 1.0,
-                  divisions: colorPallete.length,
-                  value: rightBackgroundColor.toDouble(),
-                  onChanged: (value) => setState(() {
-                    rightBackgroundColor = value.toInt();
-                  }),
-                )),
-            const SizedBox(
-              height: 15,
-            ),
-            SliderTheme(
-                data: const SliderThemeData(
-                    valueIndicatorTextStyle: TextStyle(color: Colors.grey)),
-                child: Slider(
-                  label: "Right Drawer Label Color",
-                  activeColor: colorPallete[rightTextColor],
-                  min: 0,
-                  max: colorPallete.length.toDouble() - 1.0,
-                  divisions: colorPallete.length,
-                  value: rightTextColor.toDouble(),
-                  onChanged: (value) => setState(() {
-                    rightTextColor = value.toInt();
-                  }),
-                )),
-          ],
-        ),
-      ),
+      body: (index == 0)
+          ? const People()
+          : (index == 1)
+              ? const Trending()
+              : const Tv(),
     );
   }
 }
